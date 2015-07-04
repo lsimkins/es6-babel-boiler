@@ -15,7 +15,7 @@ function compile(watch) {
  
   function rebundle() {
     bundler.bundle()
-      .on('error', function(err) { console.error(err); this.emit('end'); })
+      .on('error', function(err) { console.error(err.stack); this.emit('end'); })
       .pipe(source('build.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
